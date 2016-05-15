@@ -8,7 +8,8 @@ import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE)
 import Test.Unit.Console (TESTOUTPUT)
 
-import Main (isEven, countEven, squares, filterNegative, cartesian, triples)
+import Main (isEven, countEven, squares, filterNegative, filterNegative',
+  cartesian, triples)
 
 main :: forall t1. Eff (console :: CONSOLE , testOutput :: TESTOUTPUT | t1) Unit
 main = runTest do
@@ -28,6 +29,9 @@ main = runTest do
 
     test "filterNegative" do
       A.equal [2, 3] $ filterNegative [2, -3, 3]
+
+    test "filterNegative'" do
+      A.equal [2, 3] $ filterNegative' [2, -3, 3]
 
   suite "4.11 – Guards" do
     test "cartesian" do
