@@ -4,9 +4,13 @@ import Prelude
 import Test.Unit (suite, test)
 import Test.Unit.Main (runTest)
 import Test.Unit.Assert as A
+import Control.Monad.Eff (Eff)
+import Control.Monad.Eff.Console (CONSOLE)
+import Test.Unit.Console (TESTOUTPUT)
 
 import Main (isEven, countEven, squares, filterNegative, cartesian, triples)
 
+main :: forall t1. Eff (console :: CONSOLE , testOutput :: TESTOUTPUT | t1) Unit
 main = runTest do
   suite "4.4 - Recursion on Arrays" do
     test "isEven works" do
